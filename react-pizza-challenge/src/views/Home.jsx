@@ -2,7 +2,9 @@
 
 import React, { Component } from 'react';
 
-import PizzaDropdown from '../components/BuyPizzaTable.jsx'
+import PizzaDropdown from '../components/PizzaSizes.jsx'
+import ToppingDropdown from '../components/PizzaToppings.jsx'
+
 
 export default class Home extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ export default class Home extends Component {
     return (
       <div>
         <PizzaDropdown />
+        <ToppingDropdown />
       </div>
     )
   }
