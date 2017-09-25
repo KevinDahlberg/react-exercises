@@ -9,7 +9,11 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <div />
+      <footer className="footer text-center">
+        <div className="container">
+          <p className="text-muted">Copyright 2017 OnePointOh Consulting</p>
+        </div>
+      </footer>
     )
   }
 
