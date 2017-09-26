@@ -2,8 +2,7 @@
 
 import React, { Component } from 'react';
 
-import PizzaDropdown from '../components/PizzaSizes.jsx'
-import ToppingDropdown from '../components/PizzaToppings.jsx'
+import OrderPizza from '../components/OrderPizza.jsx'
 
 
 export default class Home extends Component {
@@ -14,8 +13,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <PizzaDropdown />
-        <ToppingDropdown />
+        <OrderPizza />
       </div>
     )
   }
