@@ -10,11 +10,13 @@ export default class CartStore extends Reflux.createStore {
   {
     super();
     this.state = {}
+    }
     this.listenables = Actions;
   }
 
   onAddToCart(item) {
     _cart.cart.push(item);
+    this.setState(_cart);
     this.emit();
   }
 
@@ -22,11 +24,13 @@ export default class CartStore extends Reflux.createStore {
     _cart.cart = _cart.cart.filter((cartItem) => {
       return item !== cartItem
     });
+    this.setState(_cart);
     this.emit();
   }
 
   onClearCart(item) {
     _cart.cart = [];
+    this.setState(_cart);
     this.emit();
   }
 
