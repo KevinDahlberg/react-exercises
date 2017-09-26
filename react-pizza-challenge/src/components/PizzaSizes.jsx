@@ -12,16 +12,29 @@ const Pizzas = [
 ];
 
 const menuItems = Pizzas.map((p, index) =>
-  <MenuItem key={index}>{p.size}</MenuItem>
+  <option key={index} value={p.size}>{p.size}</option>
 );
 
 export default class PizzaDropdown extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      size: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({size: event.target.value});
+  }
 
   render() {
     return (
-      <DropdownButton title="Size" id="bg-nested-dropdown">
+      <select defaultValue={this.state.size}
+      onChange={this.handleChange}>
         {menuItems}
-      </DropdownButton>
+      </select>
     )
   }
 
