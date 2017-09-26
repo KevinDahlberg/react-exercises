@@ -12,7 +12,7 @@ export default class OrderPizza extends Component {
     super(props);
     this.state = {
       size: '',
-      toppings: ''
+      toppings: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,7 +24,13 @@ export default class OrderPizza extends Component {
     const value = target.value;
     const name = target.name;
 
+    if (name === 'toppings') {
+      this.setState(
+        {toppings: [...this.state.toppings, value]}
+      )
+    } else {
     this.setState({[name]: value});
+    }
   }
 
   handleSubmit(event) {
@@ -51,7 +57,6 @@ export default class OrderPizza extends Component {
               </select>
               <select
                 name="toppings"
-                defaultValue={this.state.toppings}
                 onChange={this.handleChange}>
                   <option value=''>Choose Toppings</option>
                   <option value='Pepperoni'>Pepperoni</option>
