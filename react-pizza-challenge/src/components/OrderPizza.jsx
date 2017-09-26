@@ -66,7 +66,25 @@ export default class OrderPizza extends Component {
             <input type='submit' value='submit' />
           </form>
         </Row>
+        <Row>
+        <table>
+          <thead>
+            <tr>
+            <th>Size</th>
+            <th>Toppings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{this.state.size}</td>
+              <td>{this.state.toppings}</td>
+            </tr>
+          </tbody>
+        </table>
+        </Row>
       </Grid>
+
+
     )
   }
 }
