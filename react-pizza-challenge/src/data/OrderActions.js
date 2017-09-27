@@ -1,11 +1,28 @@
 'use static';
 
-import Reflux from 'reflux';
+import Redux from 'redux';
 
-let OrderActions = Reflux.createActions ([
-  'addSize',
-  'addToppings',
-  'clearOrder'
-]);
+const ADD_SIZE = 'ADD_SIZE';
+const ADD_TOPPINGS = 'ADD_TOPPINGS';
+const CLEAR_ORDER = 'CLEAR_ORDER'
 
-module.exports = OrderActions;
+export const addSize = (size) => {
+  return {
+    type: ADD_SIZE,
+    size
+  }
+}
+
+export const addToppings = (toppings) => {
+  return {
+    type: ADD_TOPPINGS,
+    toppings
+  }
+}
+
+export const clearOrder = (defaultObj) => {
+  return {
+    type: CLEAR_ORDER,
+    defaultObj
+  }
+}

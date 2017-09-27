@@ -1,16 +1,19 @@
 'use static'
 
-import React, { Component } from 'react';
-import { HashRouter, Route, Switch, NavLink } from 'react-router-dom';
+import React from 'react';
+import { HashRouter } from 'react-router-dom';
 import { render } from 'react-dom';
-import { Nav, NavItem, Navbar, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 
 import Layout from './Layout.jsx';
 
+import { createStore } from 'redux';
+import { orderPizza } from './data/OrderReducer.js';
+
+let store = createStore(orderPizza);
+
 render ((
   <HashRouter>
-    <Layout />
+    <Layout store={store} />
   </HashRouter>
 ),
   document.getElementById('container')
