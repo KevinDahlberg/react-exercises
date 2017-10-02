@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Menu from './Menu'
 import Home from './Home'
-import Order from './Order'
+import Order from './Order/Order'
 import Cart from './Cart'
 
 const Layout = () => (
