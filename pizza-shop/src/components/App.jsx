@@ -1,6 +1,5 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { Router, Route } from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
 
 import Layout from './Layout'
