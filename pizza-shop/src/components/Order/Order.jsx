@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Grid } from 'react-bootstrap'
 
 import SizeDropdown from './SizeDropdown'
+import ToppingCheckboxes from './ToppingCheckboxes'
 
 export default class Order extends Component {
   constructor(props) {
@@ -30,6 +31,8 @@ export default class Order extends Component {
       <h1>Order Your Pizza</h1>
       <h2>Choose Your Size</h2>
       <SizeDropdown pizzaSizes = {this.state.pizzaSizes} />
+      <h2>Choose Your Toppings</h2>
+      <ToppingCheckboxes pizzaToppings= {this.state.pizzaToppings} />
       </Grid>
     )
   }
