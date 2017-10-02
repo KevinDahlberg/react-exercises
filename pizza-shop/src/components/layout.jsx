@@ -1,13 +1,16 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { Route, Router } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Home from './Home'
+
 const Layout = () => (
   <div className="body">
-    <Router>
+    <Switch>
+      <div>
       <Route exact path="/" component={Home} />
-    </Router>
+      </div>
+    </Switch>
   </div>
 )
 
