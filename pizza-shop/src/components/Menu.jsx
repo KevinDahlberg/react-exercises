@@ -19,8 +19,11 @@ export default class Menu extends Component {
             <LinkContainer to="/">
               <NavItem eventKey={1} href="/">Home</NavItem>
             </LinkContainer>
+            <LinkContainer to="/order">
+              <NavItem eventKey={2} href="/order">Order</NavItem>
+            </LinkContainer>
             <LinkContainer to="/cart">
-              <NavItem eventKey={2} href="/cart">Cart</NavItem>
+              <NavItem eventKey={3} href="/cart">Cart</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

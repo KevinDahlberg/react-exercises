@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Menu from './Menu'
 import Home from './Home'
+import Order from './Order'
 import Cart from './Cart'
 
 const Layout = () => (
@@ -11,6 +12,7 @@ const Layout = () => (
       <div>
       <Menu />
       <Route exact path="/" component={Home} />
+      <Route exact path="/order" component={Order} />
       <Route exact path="/cart" component={Cart} />
       </div>
     </Switch>
