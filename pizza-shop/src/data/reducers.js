@@ -30,7 +30,7 @@ function orderReducer (state = {}, action) {
   }
 }
 
-const rootReducer = combineReducers({
+export default const rootReducer = combineReducers({
   cartReducer,
   orderReducer,
   routing: routerReducer

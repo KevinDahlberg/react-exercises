@@ -21,7 +21,7 @@ export function removeFromCart(product) {
 }
 
 export function clearCart (productArray) {
-  type: CLEAR_CART
+  type: CLEAR_CART,
   productArray
 }
 

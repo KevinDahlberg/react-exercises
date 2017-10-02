@@ -31,7 +31,7 @@ export default class PizzaDropdown extends Component {
 
   render() {
     return (
-      <select defaultValue={this.state.size}
+      <select value={this.props.value}
       onChange={this.handleChange}>
         {menuItems}
       </select>
