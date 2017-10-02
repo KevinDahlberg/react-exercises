@@ -15,7 +15,9 @@ export default class ToppingCheckboxes extends Component {
     const name = target.name
 
     this.setState({
-      [name]: value
+      currentToppings: {
+        [name]: value
+      }
     })
   }
 

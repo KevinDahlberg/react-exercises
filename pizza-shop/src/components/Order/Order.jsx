@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, FormGroup, InputGroup, Label } from 'react-bootstrap'
+import { Grid, FormGroup, InputGroup, Col } from 'react-bootstrap'
 
 import SizeDropdown from './SizeDropdown'
 import ToppingCheckboxes from './ToppingCheckboxes'
@@ -30,16 +30,23 @@ export default class Order extends Component {
     return (
       <Grid>
       <h1>Order Your Pizza</h1>
+      <Col xs={6}>
         <form>
           <FormGroup>
             <h2>Choose Your Size</h2>
-            <SizeDropdown pizzaSizes = {this.state.pizzaSizes} />
+            <SizeDropdown pizzaSizes={this.state.pizzaSizes} />
           </FormGroup>
           <FormGroup>
             <h2>Choose Your Toppings</h2>
-            <ToppingCheckboxes pizzaToppings= {this.state.pizzaToppings} />
+            <ToppingCheckboxes pizzaToppings={this.state.pizzaToppings} />
           </FormGroup>
         </form>
+      </Col>
+      <Col xs={6}>
+        <h2>Your Pizza</h2>
+        <p>Size: {this.state.pizzaOrderSize}</p>
+        <p>Toppings: {this.state.currentToppings}</p>
+      </Col>
       </Grid>
     )
   }
