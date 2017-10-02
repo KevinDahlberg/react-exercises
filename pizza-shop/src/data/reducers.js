@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import {
-  ADD_TO_CART
-  REMOVE_FROM_CART
-  CONFIRM_CART
-  CONFIRM_ORDER
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  CLEAR_CART,
+  CONFIRM_CART,
+  CONFIRM_ORDER,
 } from './actions'
 
 function cartReducer (state = {}, action) {
@@ -30,8 +31,10 @@ function orderReducer (state = {}, action) {
   }
 }
 
-export default const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   cartReducer,
   orderReducer,
   routing: routerReducer
 })
+
+export default rootReducer
