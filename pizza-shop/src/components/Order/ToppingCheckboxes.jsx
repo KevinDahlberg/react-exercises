@@ -45,6 +45,7 @@ export default class ToppingCheckboxes extends Component {
             {topping: 'Jalapeno Peppers', cost: 1},
             {topping: 'Mushrooms', cost: 1}
           ]
+          
     return(
       <div>
         {this.createCheckboxes(toppings)}

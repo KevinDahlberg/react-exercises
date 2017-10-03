@@ -3,7 +3,6 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const CLEAR_CART = 'CLEAR_CART'
 export const CONFIRM_CART = 'CONFIRM_CART'
 
-
 export const addToCart = (product) => {
   return dispatch => {
     dispatch({

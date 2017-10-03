@@ -5,7 +5,11 @@ import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers'
 
 export const history = createHistory()
-const initialState = {}
+const initialState = {
+  pizzaOrderSize: '',
+  pizzaOrderToppings: [],
+  pizzaOrder: ''
+}
 const enhancers = []
 const middleware = [
   thunk,

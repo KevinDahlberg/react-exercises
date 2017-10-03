@@ -11,14 +11,9 @@ import ViewOrder from '../components/Order/ViewOrder'
 import OrderForm from '../containers/OrderForm'
 import addToCart from '../data/cart'
 
-export default class Order extends Component {
+const Order = props => {
   constructor(props) {
     super(props);
-    this.state = {
-      pizzaOrderSize: '',
-      pizzaOrderToppings: [],
-      pizzaOrder: ''
-    }
 
     this.setPizzaOrderSize = this.setPizzaOrderSize.bind(this)
     this.setPizzaToppings = this.setPizzaToppings.bind(this)
