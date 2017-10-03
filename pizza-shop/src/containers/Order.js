@@ -4,12 +4,12 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import SizeDropdown from './SizeDropdown'
-import ToppingCheckboxes from './ToppingCheckboxes'
-import ViewOrder from './ViewOrder'
+import SizeDropdown from '../components/Order/SizeDropdown'
+import ToppingCheckboxes from '../components/Order/ToppingCheckboxes'
+import ViewOrder from '../components/Order/ViewOrder'
 
-import OrderForm from '../../containers/OrderForm'
-import addToCart from '../../data/cart'
+import OrderForm from '../containers/OrderForm'
+import addToCart from '../data/cart'
 
 export default class Order extends Component {
   constructor(props) {
