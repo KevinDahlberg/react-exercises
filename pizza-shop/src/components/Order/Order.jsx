@@ -21,8 +21,13 @@ export default class Order extends Component {
         {topping: 'Pineapple', cost: 1},
         {topping: 'Jalapeno Peppers', cost: 1},
         {topping: 'Mushrooms', cost: 1}
-      ]
+      ],
+      pizzaOrderSize: ''
     }
+  }
+
+  setPizzaOrderSize(size) {
+    this.setState(...this.state, {pizzaOrderSize: size})
   }
 
   render() {
@@ -34,7 +39,10 @@ export default class Order extends Component {
         <form>
           <FormGroup>
             <h2>Choose Your Size</h2>
-            <SizeDropdown pizzaSizes={this.state.pizzaSizes} />
+            <SizeDropdown
+            onSizeChange={this.setPizzaOrderSize}
+            pizzaSizes={this.state.pizzaSizes}
+            />
           </FormGroup>
           <FormGroup>
             <h2>Choose Your Toppings</h2>

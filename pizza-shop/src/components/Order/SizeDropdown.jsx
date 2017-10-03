@@ -5,16 +5,11 @@ import { FormControl } from 'react-bootstrap'
 export default class SizeDropdown extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
-
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   handleInputChange(e) {
-    const target = e.target
-    this.setState({
-      pizzaOrderSize: target.value
-    })
+    this.props.onSizeChange(e.target.value)
   }
 
   static propTypes = {
@@ -30,7 +25,7 @@ export default class SizeDropdown extends Component {
           componentClass="select"
           placeholder="select"
           id="select-pizza-size"
-          value={this.state.value}
+          inputRef= { input => {this.value = input}}
           onChange={this.handleInputChange}
         >
             {this.props.pizzaSizes.map((pizza) =>
