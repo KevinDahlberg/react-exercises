@@ -22,10 +22,12 @@ export default class Order extends Component {
         {topping: 'Jalapeno Peppers', cost: 1},
         {topping: 'Mushrooms', cost: 1}
       ],
-      pizzaOrderSize: ''
+      pizzaOrderSize: '',
+      pizzaOrderToppings: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.setPizzaOrderSize = this.setPizzaOrderSize.bind(this)
+    this.setPizzaToppings = this.setPizzaToppings.bind(this)
   }
 
   handleChange(e) {
@@ -34,6 +36,11 @@ export default class Order extends Component {
 
   setPizzaOrderSize(size) {
     this.setState({pizzaOrderSize: size})
+  }
+
+  setPizzaToppings(topping) {
+    let toppingArray = [...this.state.pizzaOrderToppings, topping]
+    this.setState({pizzaOrderToppings: toppingArray})
   }
 
   render() {
@@ -52,14 +59,16 @@ export default class Order extends Component {
           </FormGroup>
           <FormGroup>
             <h2>Choose Your Toppings</h2>
-            <ToppingCheckboxes pizzaToppings={this.state.pizzaToppings} />
+            <ToppingCheckboxes
+            onToppingChange={this.setPizzaToppings}
+            pizzaToppings={this.state.pizzaToppings} />
           </FormGroup>
         </form>
       </Col>
       <Col xs={6}>
         <h2>Your Pizza</h2>
         <p>Size: {this.state.pizzaOrderSize}</p>
-        <p>Toppings: {this.state.currentToppings}</p>
+        <p>Toppings: {this.state.pizzaOrderToppings}</p>
         <form>
           <label>Pizza Size</label>
           <select value={this.state.pizzaOrderSize} onChange={this.handleChange}>

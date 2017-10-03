@@ -13,12 +13,11 @@ export default class ToppingCheckboxes extends Component {
     const target = e.target
     const value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
-
-    this.setState({
-      currentToppings: {
-        [name]: value
-      }
-    })
+    if (value ) {
+      this.props.onToppingChange(name)
+    } else {
+      return
+    }
   }
 
   createCheckbox = (topping, idx) => (
