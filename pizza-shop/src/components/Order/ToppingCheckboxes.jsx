@@ -37,7 +37,14 @@ export default class ToppingCheckboxes extends Component {
   )
 
   render () {
-    const toppings = this.props.pizzaToppings
+    const toppings = [
+            {topping: 'Pepperoni', cost: 1},
+            {topping: 'Sausage', cost: 1},
+            {topping: 'Canadian Bacon', cost: 1},
+            {topping: 'Pineapple', cost: 1},
+            {topping: 'Jalapeno Peppers', cost: 1},
+            {topping: 'Mushrooms', cost: 1}
+          ]
     return(
       <div>
         {this.createCheckboxes(toppings)}

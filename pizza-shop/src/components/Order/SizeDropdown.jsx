@@ -20,6 +20,13 @@ export default class SizeDropdown extends Component {
 
 
   render() {
+    const pizzaSizes = [
+          {size: 'Size', cost: 0},
+          {size: 'Large', cost: 8},
+          {size: 'Medium', cost: 7},
+          {size: 'Small', cost: 6}
+        ]
+
     return(
         <FormControl
           componentClass="select"
@@ -28,7 +35,7 @@ export default class SizeDropdown extends Component {
           value={this.props.pizzaOrderSize}
           onChange={this.handleInputChange}
         >
-            {this.props.pizzaSizes.map((pizza) =>
+            {pizzaSizes.map((pizza) =>
               <option key={pizza.cost} value={pizza.size}>{pizza.size}</option>
             )}
         </FormControl>
