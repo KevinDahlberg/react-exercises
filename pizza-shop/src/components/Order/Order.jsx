@@ -10,6 +10,7 @@ export default class Order extends Component {
     super(props);
     this.state = {
       pizzaSizes: [
+        {size: 'Size', cost: 0},
         {size: 'Large', cost: 8},
         {size: 'Medium', cost: 7},
         {size: 'Small', cost: 6}
@@ -25,22 +26,28 @@ export default class Order extends Component {
       pizzaOrderSize: '',
       pizzaOrderToppings: []
     }
-    this.handleChange = this.handleChange.bind(this)
+
     this.setPizzaOrderSize = this.setPizzaOrderSize.bind(this)
     this.setPizzaToppings = this.setPizzaToppings.bind(this)
   }
 
-  handleChange(e) {
-    this.setState({pizzaOrderSize: e.target.value})
-  }
 
   setPizzaOrderSize(size) {
-    this.setState({pizzaOrderSize: size})
+      this.setState({pizzaOrderSize: size})
   }
 
   setPizzaToppings(topping) {
-    let toppingArray = [...this.state.pizzaOrderToppings, topping]
-    this.setState({pizzaOrderToppings: toppingArray})
+    if (topping.add) {
+      let toppingArray = [...this.state.pizzaOrderToppings, topping.topping]
+      this.setState({pizzaOrderToppings: toppingArray})
+    } else {
+      const index = this.state.pizzaOrderToppings.indexOf(topping.topping)
+      if (index > -1) {
+        let toppingArray = this.state.pizzaOrderToppings.filter((topping, i) => i !== index)
+        this.setState({pizzaOrderToppings: toppingArray})
+      }
+    }
+
   }
 
   render() {
@@ -68,15 +75,12 @@ export default class Order extends Component {
       <Col xs={6}>
         <h2>Your Pizza</h2>
         <p>Size: {this.state.pizzaOrderSize}</p>
-        <p>Toppings: {this.state.pizzaOrderToppings}</p>
-        <form>
-          <label>Pizza Size</label>
-          <select value={this.state.pizzaOrderSize} onChange={this.handleChange}>
-            {this.state.pizzaSizes.map((pizza) =>
-              <option key={pizza.cost} value={pizza.size}>{pizza.size}</option>
-            )}
-          </select>
-        </form>
+        <p>Toppings: </p>
+        <ul>
+        {this.state.pizzaOrderToppings.map((topping, idx) =>
+          <li key={idx}>{topping}</li>
+        )}
+        </ul>
       </Col>
       </Grid>
     )
