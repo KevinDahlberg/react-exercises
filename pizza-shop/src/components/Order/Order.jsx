@@ -24,10 +24,16 @@ export default class Order extends Component {
       ],
       pizzaOrderSize: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.setPizzaOrderSize = this.setPizzaOrderSize.bind(this)
+  }
+
+  handleChange(e) {
+    this.setState({pizzaOrderSize: e.target.value})
   }
 
   setPizzaOrderSize(size) {
-    this.setState(...this.state, {pizzaOrderSize: size})
+    this.setState({pizzaOrderSize: size})
   }
 
   render() {
@@ -54,6 +60,14 @@ export default class Order extends Component {
         <h2>Your Pizza</h2>
         <p>Size: {this.state.pizzaOrderSize}</p>
         <p>Toppings: {this.state.currentToppings}</p>
+        <form>
+          <label>Pizza Size</label>
+          <select value={this.state.pizzaOrderSize} onChange={this.handleChange}>
+            {this.state.pizzaSizes.map((pizza) =>
+              <option key={pizza.cost} value={pizza.size}>{pizza.size}</option>
+            )}
+          </select>
+        </form>
       </Col>
       </Grid>
     )

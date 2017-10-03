@@ -21,17 +21,14 @@ export default class SizeDropdown extends Component {
 
   render() {
     return(
-        <FormControl
-          componentClass="select"
-          placeholder="select"
-          id="select-pizza-size"
-          value={this.props.pizzaOrderSize}
-          onChange={this.handleInputChange}
-        >
+        <form>
+          <label>Pizza Size</label>
+          <select value={this.props.value} onChange={this.handleInputChange}>
             {this.props.pizzaSizes.map((pizza) =>
               <option key={pizza.cost} value={pizza.size}>{pizza.size}</option>
             )}
-        </FormControl>
+          </select>
+        </form>
     )
   }
 }
