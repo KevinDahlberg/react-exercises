@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Col } from 'react-bootstrap'
 
 export default class ItemsToDo extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class ItemsToDo extends Component {
   handleItemClick (item, e){
     this.props.onItemClick(item, e)
   }
-  
+
   todoItemList (array) {
     const itemArray = array.map((item, idx) => {
       let boundItemClick = this.handleItemClick.bind(this, item);
@@ -22,12 +23,12 @@ export default class ItemsToDo extends Component {
 
   render() {
       return (
-        <div>
+        <Col xs={6}>
           <h2>Items To Do</h2>
           <ul>
             {this.todoItemList(this.props.todoList)}
           </ul>
-        </div>
+        </Col>
       )
     }
 }

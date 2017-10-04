@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col } from 'react-bootstrap'
 
 import CompletedItems from './components/CompletedItems'
 import ItemsToDo from './components/ItemsToDo'
@@ -35,17 +36,20 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <AddTodo
-          onHandleSubmit = {this.handleSubmit}
-          onHandleChange = {this.handleChange}
-          item = {this.state.item}
-        />
-        <ItemsToDo
-          onItemClick = {this.itemClick}
-          todoList = {this.state.todoList} />
-        <CompletedItems completedList = {this.state.completedList} />
-      </div>
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <AddTodo
+              onHandleSubmit = {this.handleSubmit}
+              onHandleChange = {this.handleChange}
+              item = {this.state.item} />
+            <ItemsToDo
+              onItemClick = {this.itemClick}
+              todoList = {this.state.todoList} />
+            <CompletedItems completedList = {this.state.completedList} />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

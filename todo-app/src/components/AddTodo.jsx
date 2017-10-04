@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Col, Button } from 'react-bootstrap'
 
 export default class AddTodo extends Component {
   constructor(props){
@@ -17,13 +18,13 @@ export default class AddTodo extends Component {
 
   render() {
     return (
-      <div>
+      <Col xs={6}>
         <h1>Awesome To Do List</h1>
         <form onSubmit={this.handleSubmit}>
         <input type="text" value={this.props.item} onChange={this.handleChange}/>
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
         </form>
-      </div>
+      </Col>
     )
   }
 }
