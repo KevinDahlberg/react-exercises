@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import CompletedItems from './components/CompletedItems'
+import ItemsToDo from './components/ItemsToDo'
+import AddTodo from './components/AddTodo'
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -10,7 +14,7 @@ class App extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.itemClick = this.itemClick.bind(this)
   }
 
   handleSubmit(e){
@@ -23,8 +27,7 @@ class App extends Component {
     this.setState({item: e.target.value})
   }
 
-  handleClick(e){
-    const item = e.target.value
+  itemClick (item, e){
     let completedArray = [...this.state.completedList, item]
     let todoArray = this.state.todoList.filter((_item) => _item !== item.toString())
     this.setState({todoList: todoArray, completedList: completedArray})
@@ -33,29 +36,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>Awesome To Do List</h1>
-          <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.item} onChange={this.handleChange}/>
-          <button type="submit">Submit</button>
-          </form>
-        </div>
-        <div>
-          <h2>Items To Do</h2>
-          <ul>
-            {this.state.todoList.map((item, idx) =>
-              <li key={idx} onClick={this.handleClick} value={item}>{item}</li>
-            )}
-          </ul>
-        </div>
-        <div>
-          <h2>Completed Items</h2>
-          <ul>
-            {this.state.completedList.map((item, idx) =>
-              <li key={idx}>{item}</li>
-            )}
-          </ul>
-        </div>
+        <AddTodo
+          onHandleSubmit = {this.handleSubmit}
+          onHandleChange = {this.handleChange}
+          item = {this.state.item}
+        />
+        <ItemsToDo
+          onItemClick = {this.itemClick}
+          todoList = {this.state.todoList} />
+        <CompletedItems completedList = {this.state.completedList} />
       </div>
     );
   }
