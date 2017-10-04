@@ -5,10 +5,12 @@ class App extends Component {
     super(props)
     this.state = {
       item: '',
-      todoList: []
+      todoList: [],
+      completedList: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleSubmit(e){
@@ -19,6 +21,14 @@ class App extends Component {
 
   handleChange(e){
     this.setState({item: e.target.value})
+  }
+
+  handleClick(e){
+    const item = e.target.value
+    let completedArray = [...this.state.completedList, item]
+    let todoArray = this.state.todoList.filter((_item) => _item !== item.toString())
+    console.log(todoArray);
+    this.setState({todoList: todoArray, completedList: completedArray})
   }
 
   render() {
@@ -35,6 +45,14 @@ class App extends Component {
           <h2>Items To Do</h2>
           <ul>
             {this.state.todoList.map((item, idx) =>
+              <li key={idx} onClick={this.handleClick} value={item}>{item}</li>
+            )}
+          </ul>
+        </div>
+        <div>
+          <h2>Completed Items</h2>
+          <ul>
+            {this.state.completedList.map((item, idx) =>
               <li key={idx}>{item}</li>
             )}
           </ul>
