@@ -27,7 +27,6 @@ class App extends Component {
     const item = e.target.value
     let completedArray = [...this.state.completedList, item]
     let todoArray = this.state.todoList.filter((_item) => _item !== item.toString())
-    console.log(todoArray);
     this.setState({todoList: todoArray, completedList: completedArray})
   }
 
