@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, FormGroup, Col, Button} from 'react-bootstrap'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import SizeDropdown from '../components/Order/SizeDropdown'
@@ -86,8 +87,8 @@ const mapStateToProps = state => ({
   cart: state.cartReducer.cart
 })
 
-const mapDispatchToProps = dispatch => ({
-  addToCart
-})
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({addToCart}, dispatch)
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Order)
