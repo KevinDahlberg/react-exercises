@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap'
 
-import CompletedItems from './components/CompletedItems'
-import ItemsToDo from './components/ItemsToDo'
-import AddTodo from './components/AddTodo'
+import CompletedItems from '../components/CompletedItems'
+import ItemsToDo from '../components/ItemsToDo'
+import AddTodo from '../components/AddTodo'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      item: '',
-      todoList: [],
-      completedList: []
+      item: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -19,8 +17,9 @@ class App extends Component {
   }
 
   handleSubmit(e){
-    const newTodoList = [...this.state.todoList, this.state.item]
-    this.setState({item: '', todoList: newTodoList})
+    const newTodoList = [...this.props.todoList, this.state.item]
+    this.setState({item: ''})
+    dispatch(submitTodo(newTodoList))
     e.preventDefault()
   }
 
@@ -29,9 +28,10 @@ class App extends Component {
   }
 
   itemClick (item, e){
-    let completedArray = [...this.state.completedList, item]
-    let todoArray = this.state.todoList.filter((_item) => _item !== item.toString())
-    this.setState({todoList: todoArray, completedList: completedArray})
+    let completedArray = [...this.props.completedList, item]
+    let todoArray = this.props.todoList.filter((_item) => _item !== item.toString())
+    const actionItems = {todoList: todoArray, completedList: completedArray}
+    dispatch(completeTodo(actionItems))
   }
 
   render() {
@@ -45,8 +45,8 @@ class App extends Component {
               item = {this.state.item} />
             <ItemsToDo
               onItemClick = {this.itemClick}
-              todoList = {this.state.todoList} />
-            <CompletedItems completedList = {this.state.completedList} />
+              todoList = {this.props.todoList} />
+            <CompletedItems completedList = {this.props.completedList} />
           </Col>
         </Row>
       </Grid>
