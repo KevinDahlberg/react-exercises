@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import CompletedItems from '../components/CompletedItems'
 import ItemsToDo from '../components/ItemsToDo'
 import AddTodo from '../components/AddTodo'
+
+import { submitTodo, completeTodo } from '../data/TodoRedux'
 
 class App extends Component {
   constructor(props){
@@ -17,10 +21,11 @@ class App extends Component {
   }
 
   handleSubmit(e){
+    e.preventDefault()
     const newTodoList = [...this.props.todoList, this.state.item]
     this.setState({item: ''})
-    dispatch(submitTodo(newTodoList))
-    e.preventDefault()
+    const { dispatch } = this.props
+    submitTodo(newTodoList)
   }
 
   handleChange(e){
@@ -31,7 +36,8 @@ class App extends Component {
     let completedArray = [...this.props.completedList, item]
     let todoArray = this.props.todoList.filter((_item) => _item !== item.toString())
     const actionItems = {todoList: todoArray, completedList: completedArray}
-    dispatch(completeTodo(actionItems))
+    const { dispatch } = this.props
+    completeTodo(actionItems)
   }
 
   render() {
@@ -54,4 +60,14 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  todoList: state.todoList,
+  completedList: state.completedList
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  submitTodo,
+  completeTodo
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
