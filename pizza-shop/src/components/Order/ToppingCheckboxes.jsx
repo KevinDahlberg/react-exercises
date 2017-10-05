@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Checkbox, InputGroup } from 'react-bootstrap'
+import { Checkbox } from 'react-bootstrap'
 
 export default class ToppingCheckboxes extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ export default class ToppingCheckboxes extends Component {
             {topping: 'Jalapeno Peppers', cost: 1},
             {topping: 'Mushrooms', cost: 1}
           ]
-          
+
     return(
       <div>
         {this.createCheckboxes(toppings)}

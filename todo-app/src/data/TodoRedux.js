@@ -7,6 +7,7 @@ const initialState = {
   completedList: []
 
 }
+
 export function submitTodo (itemArray) {
   console.log(itemArray);
   return dispatch => {

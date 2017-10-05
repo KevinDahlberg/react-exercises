@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import { Grid, FormGroup, InputGroup, Col, Button} from 'react-bootstrap'
-import { push } from 'react-router-redux'
-import { bindActionCreators } from 'redux'
+import { Grid, FormGroup, Col, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import SizeDropdown from '../components/Order/SizeDropdown'
 import ToppingCheckboxes from '../components/Order/ToppingCheckboxes'
 import ViewOrder from '../components/Order/ViewOrder'
 
-import OrderForm from '../containers/OrderForm'
 import addToCart from '../data/cart'
 
-const Order = props => {
+class Order extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      pizzaOrderSize: '',
+      pizzaOrderToppings: []
+    }
     this.setPizzaOrderSize = this.setPizzaOrderSize.bind(this)
     this.setPizzaToppings = this.setPizzaToppings.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,9 +39,12 @@ const Order = props => {
   }
 
   handleSubmit(e) {
-    const pizzaToAdd = {size: this.state.pizzaOrderSize, toppings: this.state.pizzaOrderToppings}
-    this.setState({pizzaOrder: pizzaToAdd})
+    console.log(this.state, this.props);
     e.preventDefault()
+    const pizzaToAdd = {size: this.state.pizzaOrderSize, toppings: this.state.pizzaOrderToppings}
+    const newCart = [...this.props.cart, pizzaToAdd]
+    const { addToCart, dispatch } = this.props
+    dispatch(addToCart(newCart))
   }
 
   render() {
@@ -78,3 +81,13 @@ const Order = props => {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  cart: state.cartReducer.cart
+})
+
+const mapDispatchToProps = dispatch => ({
+  addToCart
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Order)

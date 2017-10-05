@@ -3,38 +3,52 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const CLEAR_CART = 'CLEAR_CART'
 export const CONFIRM_CART = 'CONFIRM_CART'
 
-export const addToCart = (product) => {
+const initialState = {
+  cart: []
+}
+
+export function addToCart (cartArray) {
+  console.log('add to cart is firing');
+  return {
+      type: ADD_TO_CART,
+      cart: cartArray
+    }
+}
+
+export function removeFromCart(cartArray) {
   return dispatch => {
     dispatch({
-      type: ADD_TO_CART,
-        product
+      type: REMOVE_FROM_CART,
+      cart: cartArray
     })
   }
 }
 
-export function removeFromCart(product) {
-  return {
-    type: REMOVE_FROM_CART,
-    product
+export function clearCart (cartArray) {
+  return dispatch => {
+    dispatch({
+      type: CLEAR_CART,
+      cart: cartArray
+    })
   }
 }
 
-export function clearCart (productArray) {
-  type: CLEAR_CART,
-  productArray
+export function confirmCart(cartArray) {
+  return dispatch => {
+    dispatch({
+      type: CONFIRM_CART,
+      cart: cartArray
+    })
+  }
 }
 
-export function confirmCart(productArray) {
-  type: CONFIRM_CART,
-  productArray
-}
-
-function cartReducer (state = {}, action) {
+function cartReducer (state = initialState, action) {
+  console.log('reducer is firing, ', action);
   switch (action.type) {
     case ADD_TO_CART:
-      return { ...state, cart: [...state.cart, action.product]}
+      return { ...state, cart: action.cart}
     case REMOVE_FROM_CART:
-      return { ...state, cart: state.cart.filter(product => action.product !== product)}
+      return { ...state, cart: action.cart}
     case CLEAR_CART:
       return { ...state, cart: []}
     case CONFIRM_CART:
