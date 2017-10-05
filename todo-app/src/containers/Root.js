@@ -5,6 +5,8 @@ import App from './App'
 
 const store = configureStore()
 
+console.log(store.getState());
+
 export default class Root extends Component {
   render() {
     return (

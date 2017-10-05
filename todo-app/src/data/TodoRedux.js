@@ -27,7 +27,7 @@ export function completeTodo (finishedItemArray) {
 }
 
 export function reducer(state = initialState, action) {
-  console.log(state, action.todoList);
+  console.log('reducer firing ', action);
   switch (action.type) {
     case SUBMIT_TODO:
       return {
@@ -38,8 +38,8 @@ export function reducer(state = initialState, action) {
     case COMPLETE_TODO:
       return {
         ...state,
-          todoList: action.todoList,
-          completedList: action.finishedItemArray
+          todoList: action.finishedItemArray.todoList,
+          completedList: action.finishedItemArray.completedList
       }
     default:
       return state

@@ -24,7 +24,7 @@ class App extends Component {
     e.preventDefault()
     const newTodoList = [...this.props.todoList, this.state.item]
     this.setState({item: ''})
-    const { dispatch } = this.props
+    const { submitTodo } = this.props
     submitTodo(newTodoList)
   }
 
@@ -36,7 +36,7 @@ class App extends Component {
     let completedArray = [...this.props.completedList, item]
     let todoArray = this.props.todoList.filter((_item) => _item !== item.toString())
     const actionItems = {todoList: todoArray, completedList: completedArray}
-    const { dispatch } = this.props
+    const { completeTodo } = this.props
     completeTodo(actionItems)
   }
 
@@ -65,9 +65,9 @@ const mapStateToProps = state => ({
   completedList: state.completedList
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  submitTodo,
-  completeTodo
+const mapDispatchToProps = dispatch => bindActionCreators ({
+      submitTodo,
+      completeTodo
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
