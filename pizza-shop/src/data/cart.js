@@ -8,7 +8,6 @@ const initialState = {
 }
 
 export function addToCart (cartArray) {
-  console.log('add to cart is firing');
   return {
       type: ADD_TO_CART,
       cart: cartArray
@@ -16,29 +15,23 @@ export function addToCart (cartArray) {
 }
 
 export function removeFromCart(cartArray) {
-  return dispatch => {
-    dispatch({
+  return {
       type: REMOVE_FROM_CART,
       cart: cartArray
-    })
   }
 }
 
 export function clearCart (cartArray) {
-  return dispatch => {
-    dispatch({
+  return {
       type: CLEAR_CART,
       cart: cartArray
-    })
   }
 }
 
 export function confirmCart(cartArray) {
-  return dispatch => {
-    dispatch({
+  return {
       type: CONFIRM_CART,
       cart: cartArray
-    })
   }
 }
 
