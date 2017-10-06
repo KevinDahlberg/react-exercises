@@ -3,17 +3,21 @@ import { Col, Table } from 'react-bootstrap'
 
 export default class CartTable extends Component {
 
-  createTableRows = (pizza) => (
-    <tr>
+  createTableRows = (pizza, idx) => (
+    <tr key={idx}>
       <td>{pizza.size}</td>
       <td>
         <ul>
-        {pizza.topping.map((topping) =>
-          <li>{topping}</li>
-        )}
+          {this.createToppingList(pizza.toppings)}
         </ul>
       </td>
     </tr>
+  )
+
+  createToppingList = toppingArray => (
+    toppingArray.map((topping, idx) =>
+      <li key={idx}>{topping}</li>
+    )
   )
 
   tableInstance = pizzaArray => (
@@ -25,8 +29,8 @@ export default class CartTable extends Component {
         </tr>
       </thead>
       <tbody>
-        {pizzaArray.map((pizza) =>
-          this.createTableRows(pizza)
+        {pizzaArray.map((pizza, idx) =>
+          this.createTableRows(pizza, idx)
         )}
       </tbody>
     </Table>
@@ -35,7 +39,8 @@ export default class CartTable extends Component {
   render() {
     return (
       <Col xs={12}>
-        {this.createTableRows(this.props.cart)}
+        {this.tableInstance(this.props.cart)}
       </Col>
     )
   }
+}

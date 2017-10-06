@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Menu from './Menu'
 import Home from './Home'
 import Order from '../containers/Order'
-import Cart from './Cart'
+import Cart from '../containers/Cart'
 
 const Layout = () => (
   <div className="body">

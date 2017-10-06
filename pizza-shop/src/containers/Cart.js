@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
-import { Grid, Col, Table } from 'react-bootstrap'
+import { Grid, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 import CartTable from '../components/Cart/CartTable'
 
-export default class Cart extends Component {
+class Cart extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
   render() {
-    const { cart } = this.props
     return (
       <Grid>
         <h1>Cart</h1>
@@ -17,3 +21,11 @@ export default class Cart extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => (
+  {
+  cart: state.cartReducer.cart
+  }
+)
+
+export default connect(mapStateToProps)(Cart)
