@@ -7,7 +7,7 @@ import SizeDropdown from '../components/Order/SizeDropdown'
 import ToppingCheckboxes from '../components/Order/ToppingCheckboxes'
 import ViewOrder from '../components/Order/ViewOrder'
 
-import addToCart from '../data/cart'
+import { addToCart } from '../data/cart'
 
 class Order extends Component {
   constructor(props) {
@@ -44,8 +44,11 @@ class Order extends Component {
     e.preventDefault()
     const pizzaToAdd = {size: this.state.pizzaOrderSize, toppings: this.state.pizzaOrderToppings}
     const newCart = [...this.props.cart, pizzaToAdd]
-    const { addToCart, dispatch } = this.props
-    dispatch(addToCart(newCart))
+    // const action = {type: ADD_TO_CART, cart: newCart}
+    const { addToCart } = this.props
+    addToCart(newCart)
+    this.setState ({pizzaOrderSize: '', pizzaOrderToppings: []})
+    document.getElementById("order-form").reset();
   }
 
   render() {
@@ -54,7 +57,7 @@ class Order extends Component {
       <Grid>
         <h1>Order Your Pizza</h1>
         <Col xs={6}>
-          <form onSubmit={this.handleSubmit}>
+          <form id="order-form" onSubmit={this.handleSubmit}>
             <FormGroup>
               <h2>Choose Your Size</h2>
               <SizeDropdown
